@@ -1,0 +1,246 @@
+## <summary>Google Talk browser plugin.</summary>
+
+#######################################
+## <summary>
+##	The role template for Google Talk Plugin.
+## </summary>
+## <param name="role_prefix">
+##	<summary>
+##	The prefix of the user domain (e.g., user
+##	is the prefix for user_t).
+##	</summary>
+## </param>
+## <param name="user_role">
+##	<summary>
+##	The role associated with the user domain.
+##	</summary>
+## </param>
+## <param name="user_domain">
+##	<summary>
+##	The type of the user domain.
+##	</summary>
+## </param>
+#
+template(`gtalkplugin_role_template',`
+	gen_require(`
+		type gtalkplugin_exec_t, user_tmp_t;
+		type gtalkplugin_config_home_t;
+		attribute_role gtalkplugin_roles;
+	')
+
+	########################################
+	#
+	# Declarations
+	#
+
+	roleattribute $2 gtalkplugin_roles;
+
+	type $1_gtalkplugin_t;
+	userdom_user_application_domain($1_gtalkplugin_t, gtalkplugin_exec_t)
+	role $2 types $1_gtalkplugin_t;
+
+	type $1_gtalkplugin_tmp_t;
+	userdom_user_tmp_file($1_gtalkplugin_tmp_t)
+
+	type $1_gtalkplugin_tmpfs_t;
+	userdom_user_tmpfs_file($1_gtalkplugin_tmpfs_t)
+
+	optional_policy(`
+		pulseaudio_tmpfs_content($1_gtalkplugin_tmpfs_t)
+	')
+
+	########################################
+	#
+	# Policy
+	#
+
+	allow $1_gtalkplugin_t self:netlink_route_socket r_netlink_socket_perms;
+	allow $1_gtalkplugin_t self:tcp_socket create_stream_socket_perms;
+	allow $1_gtalkplugin_t self:udp_socket create_socket_perms;
+
+	allow $1_gtalkplugin_t $1_gtalkplugin_tmp_t:file manage_file_perms;
+	files_tmp_filetrans($1_gtalkplugin_t, $1_gtalkplugin_tmp_t, file)
+
+	allow $1_gtalkplugin_t $1_gtalkplugin_tmpfs_t:file manage_file_perms;
+	fs_tmpfs_filetrans($1_gtalkplugin_t, $1_gtalkplugin_tmpfs_t, file)
+
+	allow $1_gtalkplugin_t gtalkplugin_config_home_t:dir manage_dir_perms;
+	allow $1_gtalkplugin_t gtalkplugin_config_home_t:file manage_file_perms;
+	gnome_config_filetrans($1_gtalkplugin_t, gtalkplugin_config_home_t, dir, "google-googletalkplugin")
+
+	allow $1_gtalkplugin_t $3:unix_stream_socket { getopt getattr read write };
+
+	stream_connect_pattern($1_gtalkplugin_t, user_tmp_t, user_tmp_t, $3)
+
+	kernel_read_system_state($1_gtalkplugin_t)
+
+	corenet_tcp_bind_generic_node($1_gtalkplugin_t)
+	corenet_udp_bind_generic_node($1_gtalkplugin_t)
+	corenet_tcp_connect_http_port($1_gtalkplugin_t)
+	corenet_tcp_connect_all_unreserved_ports($1_gtalkplugin_t)
+
+	corecmd_exec_shell($1_gtalkplugin_t)
+
+	dev_read_urand($1_gtalkplugin_t)
+	dev_read_sysfs($1_gtalkplugin_t)
+	dev_read_video_dev($1_gtalkplugin_t)
+	dev_write_video_dev($1_gtalkplugin_t)
+
+	fs_getattr_xattr_fs($1_gtalkplugin_t)
+
+	sysnet_read_config($1_gtalkplugin_t)
+
+	xserver_user_x_domain_template($1_gtalkplugin, $1_gtalkplugin_t, $1_gtalkplugin_tmpfs_t)
+
+	optional_policy(`
+		gnome_search_gconf_data_dir($1_gtalkplugin_t)
+	')
+
+	optional_policy(`
+		mozilla_read_user_home_files($1_gtalkplugin_t)
+	')
+
+	optional_policy(`
+		pulseaudio_run($1_gtalkplugin_t, $2)
+	')
+
+	optional_policy(`
+		unconfined_signull($1_gtalkplugin_t)
+	')
+
+	optional_policy(`
+		webkit_spec_dgram_sendto_pp($1, $1_gtalkplugin_t)
+	')
+')
+
+########################################
+## <summary>
+##	Execute gtalkplugin with a domain transition.
+## </summary>
+## <param name="role_prefix">
+##  <summary>
+##  The prefix of the user domain (e.g., user
+##  is the prefix for user_t).
+##  </summary>
+## </param>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`gtalkplugin_spec_domtrans',`
+	gen_require(`
+		type $1_gtalkplugin_t, gtalkplugin_exec_t;
+	')
+
+	corecmd_search_bin($2)
+	domtrans_pattern($2, gtalkplugin_exec_t, $1_gtalkplugin_t)
+')
+
+########################################
+## <summary>
+##	Create specified objects in a config
+##	home directories with an automatic type
+##	transition to gtalkplugin config home..
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <param name="object_class">
+##	<summary>
+##	The class of the object to be created.
+##	</summary>
+## </param>
+## <param name="name" optional="true">
+##	<summary>
+##	The name of the object being created.
+##	</summary>
+## </param>
+#
+interface(`gtalkplugin_config_filetrans_gtalkplugin',`
+	gen_require(`
+		type gtalkplugin_config_home_t;
+	')
+
+	userdom_search_user_home_dirs($1)
+
+	optional_policy(`
+		gnome_config_filetrans($1, gtalkplugin_config_home_t, $2, $3)
+	')
+')
+
+########################################
+## <summary>
+##	Manage gtalkplugin config home content.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`gtalkplugin_manage_config_home_content',`
+	gen_require(`
+		type gtalkplugin_config_home_t;
+	')
+
+	allow $1 gtalkplugin_config_home_t:dir manage_dir_perms;
+	allow $1 gtalkplugin_config_home_t:file manage_file_perms;
+	allow $1 gtalkplugin_config_home_t:lnk_file manage_lnk_file_perms;
+
+	optional_policy(`
+		gnome_list_home_config($1)
+	')
+')
+
+########################################
+## <summary>
+##  Read and write inherited unix stream socket.
+## </summary>
+## <param name="role_prefix">
+##  <summary>
+##  The prefix of the user domain (e.g., user
+##  is the prefix for user_t).
+##  </summary>
+## </param>
+## <param name="domain">
+##  <summary>
+##  Domain allowed access.
+##  </summary>
+## </param>
+#
+interface(`gtalkplugin_spec_rw_inherited_stream_socket',`
+    gen_require(`
+        type $1_gtalkplugin_t;
+    ')
+
+	allow $2 $1_gtalkplugin_t:unix_stream_socket { read write };
+')
+
+
+########################################
+## <summary>
+##  Read and write inherited tmpfs files.
+## </summary>
+## <param name="role_prefix">
+##  <summary>
+##  The prefix of the user domain (e.g., user
+##  is the prefix for user_t).
+##  </summary>
+## </param>
+## <param name="domain">
+##  <summary>
+##  Domain allowed access.
+##  </summary>
+## </param>
+#
+interface(`gtalkplugin_spec_rw_inherited_tmpfs_files',`
+    gen_require(`
+        type $1_gtalkplugin_tmpfs_t;
+	')
+
+	allow $2 $1_gtalkplugin_tmpfs_t:file { read write };
+')

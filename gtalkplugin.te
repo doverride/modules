@@ -1,0 +1,8 @@
+policy_module(gtalkplugin, 1.0.0)
+
+type gtalkplugin_exec_t;
+
+attribute_role gtalkplugin_roles;
+
+type gtalkplugin_config_home_t;
+userdom_user_home_content(gtalkplugin_config_home_t)

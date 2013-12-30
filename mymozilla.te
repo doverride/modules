@@ -1,0 +1,9 @@
+policy_module(mymozilla, 1.0.0)
+
+optional_policy(`
+	gen_require(`
+		type mozilla_plugin_tmpfs_t;
+	')
+
+	pulseaudio_tmpfs_content(mozilla_plugin_tmpfs_t)
+')

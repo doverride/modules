@@ -1,0 +1,3 @@
+HOME_DIR/\.config/google-googletalkplugin(/.*)?	gen_context(system_u:object_r:gtalkplugin_config_home_t,s0)
+
+/opt/google/talkplugin/GoogleTalkPlugin	--	gen_context(system_u:object_r:gtalkplugin_exec_t,s0)

@@ -1,0 +1,5 @@
+policy_module(webkit, 1.0.0)
+
+type webkitpp_exec_t;
+
+attribute_role webkitpp_roles;
