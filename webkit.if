@@ -113,6 +113,7 @@ template(`webkitpp_role_template',`
 
 	userdom_read_home_certs($1_webkitpp_t)
 	userdom_getattr_user_terminals($1_webkitpp_t)
+	userdom_delete_user_tmpfs_files($1_webkitpp_t)
 
 	xserver_user_x_domain_template($1_webkitpp, $1_webkitpp_t, $1_webkitpp_tmpfs_t)
 
