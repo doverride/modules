@@ -2,8 +2,11 @@ policy_module(mymozilla, 1.0.0)
 
 optional_policy(`
 	gen_require(`
-		type mozilla_plugin_tmpfs_t;
+		type mozilla_plugin_tmpfs_t, mozilla_plugin_t;
+		attribute pulseaudio_client;
 	')
+
+	typeattribute mozilla_plugin_t pulseaudio_client;
 
 	pulseaudio_tmpfs_content(mozilla_plugin_tmpfs_t)
 ')
