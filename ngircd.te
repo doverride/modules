@@ -1,0 +1,41 @@
+policy_module(ngircd, 1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type ngircd_t;
+type ngircd_exec_t;
+init_daemon_domain(ngircd_t, ngircd_exec_t)
+
+type ngircd_unit_file_t;
+systemd_unit_file(ngircd_unit_file_t)
+
+type ngircd_conf_t;
+files_config_file(ngircd_conf_t)
+
+type ngircd_var_run_t;
+files_pid_file(ngircd_var_run_t)
+
+########################################
+#
+# Local policy
+#
+
+allow ngircd_t self:capability { setuid setgid };
+allow ngircd_t self:tcp_socket create_stream_socket_perms;
+
+allow ngircd_t ngircd_conf_t:file read_file_perms;
+
+allow ngircd_t ngircd_var_run_t:dir { search_dir_perms add_entry_dir_perms del_entry_dir_perms };
+allow ngircd_t ngircd_var_run_t:file manage_file_perms;
+
+corenet_tcp_bind_generic_node(ngircd_t)
+corenet_tcp_bind_ircd_port(ngircd_t)
+
+dev_read_rand(ngircd_t)
+dev_read_urand(ngircd_t)
+
+auth_read_passwd(ngircd_t)
+

@@ -1,0 +1,32 @@
+## <summary>Free open source daemon for Internet Relay Chat (IRC).</summary>
+
+########################################
+## <summary>
+##     All of the rules required to
+##     administrate an ngircd environment.
+## </summary>
+## <param name="domain">
+##     <summary>
+##     Domain allowed access.
+##     </summary>
+## <rolecap/>
+#
+interface(`ngircd_admin',`
+       gen_require(`
+               type ngircd_t, ngircd_unit_file_t;
+               type ngircd_conf_t, ngircd_var_run_t;
+       ')
+
+       allow $1 ngircd_t_t:process { ptrace signal_perms };
+       ps_process_pattern($1, ngircd_t)
+
+       systemd_exec_systemctl($1)
+       admin_pattern($1, ngircd_unit_file_t)
+       allow $1 ngircd_unit_file_t:service all_service_perms;
+
+       files_search_etc($1)
+       admin_pattern($1, ngircd_conf_t)
+
+       files_search_pids($1)
+       admin_pattern($1, ngircd_var_run_t)
+')

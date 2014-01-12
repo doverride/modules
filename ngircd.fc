@@ -1,0 +1,5 @@
+/etc/ngircd.* -- gen_context(system_u:object_r:ngircd_conf_t,s0)
+/usr/lib/systemd/system/ngircd.*\.service -- gen_context(system_u:object_r:ngircd_unit_file_t,s0)
+/usr/sbin/ngircd -- gen_context(system_u:object_r:ngircd_exec_t,s0)
+/var/run/ngircd.*(/.*)? gen_context(system_u:object_r:ngircd_var_run_t,s0)
+
