@@ -1,0 +1,35 @@
+## <summary>Intrusion Detection and Prevention Engine.</summary>
+
+########################################
+## <summary>
+##	All of the rules required to
+##	administrate an suricata environment.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## <rolecap/>
+#
+interface(`suricata_admin',`
+	gen_require(`
+		type suricatad_t, suricatad_unit_file_t, suricatad_log_t;
+		type suricatad_conf_t, suricata_var_run_t;
+	')
+
+	allow $1 suricatad_t_t:process { ptrace signal_perms };
+	ps_process_pattern($1, suricatad_t)
+
+	systemd_exec_systemctl($1)
+	admin_pattern($1, suricatad_unit_file_t)
+	allow $1 suricatad_unit_file_t:service all_service_perms;
+
+	files_search_etc($1)
+	admin_pattern($1, suricatad_conf_t)
+
+	logging_search_logs($1)
+	admin_pattern($1, suricatad_log_t)
+
+	files_search_pids($1)
+	admin_pattern($1, suricatad_var_run_t)
+')

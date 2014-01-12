@@ -1,0 +1,51 @@
+policy_module(suricata, 1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type suricatad_t;
+type suricatad_exec_t;
+init_daemon_domain(suricatad_t, suricatad_exec_t)
+
+type suricatad_unit_file_t;
+systemd_unit_file(suricatad_unit_file_t)
+
+type suricatad_conf_t;
+files_config_file(suricatad_conf_t)
+
+type suricatad_log_t;
+logging_log_file(suricatad_log_t)
+
+type suricatad_var_run_t;
+files_pid_file(suricatad_var_run_t)
+
+########################################
+#
+# Local policy
+#
+
+allow suricatad_t self:capability net_raw;
+allow suricatad_t self:process { setsched execmem };
+allow suricatad_t self:packet_socket create_socket_perms;
+allow suricatad_t self:udp_socket create_socket_perms;
+
+read_files_pattern(suricatad_t, suricatad_conf_t, suricatad_conf_t)
+
+allow suricatad_t suricatad_log_t:dir { setattr_dir_perms add_entry_dir_perms };
+allow suricatad_t suricatad_log_t:file { read_file_perms create_file_perms setattr_file_perms append_file_perms };
+
+manage_files_pattern(suricatad_t, suricatad_var_run_t, suricatad_var_run_t)
+manage_sock_files_pattern(suricatad_t, suricatad_var_run_t, suricatad_var_run_t)
+files_pid_filetrans(suricatad_t, suricatad_var_run_t, file) 
+
+kernel_read_network_state(suricatad_t)
+kernel_read_system_state(suricatad_t)
+
+dev_list_sysfs(suricatad_t)
+dev_read_urand(suricatad_t)
+
+files_list_tmp(suricatad_t)
+
+auth_read_passwd(suricatad_t)
