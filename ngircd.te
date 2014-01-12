@@ -25,6 +25,8 @@ files_pid_file(ngircd_var_run_t)
 
 allow ngircd_t self:capability { setuid setgid };
 allow ngircd_t self:tcp_socket create_stream_socket_perms;
+allow ngircd_t self:udp_socket create_socket_perms;
+allow ngircd_t self:unix_dgram_socket create_socket_perms;
 
 allow ngircd_t ngircd_conf_t:file read_file_perms;
 
@@ -39,3 +41,4 @@ dev_read_urand(ngircd_t)
 
 auth_read_passwd(ngircd_t)
 
+sysnet_read_config(ngircd_t)
