@@ -14,7 +14,7 @@
 interface(`suricata_admin',`
 	gen_require(`
 		type suricatad_t, suricatad_unit_file_t, suricatad_log_t;
-		type suricatad_conf_t, suricata_var_run_t;
+		type suricatad_conf_t, suricatad_var_run_t;
 	')
 
 	allow $1 suricatad_t_t:process { ptrace signal_perms };
