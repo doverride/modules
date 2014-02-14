@@ -83,8 +83,9 @@ template(`webkitpp_role_template',`
 
 	allow $1_webkitpp_t { tmpfs_t user_tmpfs_t }:file { read write };
 
+	manage_files_pattern($1_webkitpp_t, $1_webkitpp_tmp_t, $1_webkitpp_tmp_t)
 	manage_dirs_pattern($1_webkitpp_t, $1_webkitpp_tmp_t, $1_webkitpp_tmp_t)
-	userdom_user_tmp_filetrans($1_webkitpp_t, $1_webkitpp_tmp_t, dir)
+	userdom_user_tmp_filetrans($1_webkitpp_t, $1_webkitpp_tmp_t, { dir file })
 
 	kernel_read_system_state($1_webkitpp_t)
 	kernel_read_network_state($1_webkitpp_t)
