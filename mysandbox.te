@@ -1,0 +1,9 @@
+policy_module(mysandbox, 1.0.0)
+
+optional_policy(`
+	gen_require(`
+		type sandbox_web_client_tmpfs_t;
+	')
+
+	pulseaudio_tmpfs_content(sandbox_web_client_tmpfs_t)
+')
