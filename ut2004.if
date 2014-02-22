@@ -1,0 +1,28 @@
+## <summary>Unreal Tournament 2004.</summary>
+
+#######################################
+## <summary>
+## Execute ut2004 with a domain transition,
+## and allow the specified role the ut2004_t domain.
+## </summary>
+## <param name="role">
+## <summary>
+## Role allowed access.
+## </summary>
+## </param>
+## <param name="domain">
+## <summary>
+## Domain allowed to transition.
+## </summary>
+## </param>
+#
+template(`ut2004_run',`
+        gen_require(`
+                type ut2004_t, ut2004_exec_t;
+        ')
+
+        domtrans_pattern($2, ut2004_exec_t, ut2004_t)
+        role $1 types ut2004_t;
+
+        ps_process_pattern($2, ut2004_t)
+')

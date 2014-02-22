@@ -1,0 +1,21 @@
+policy_module(ut2004, 1.0.0)
+
+type ut2004_t;
+type ut2004_exec_t;
+userdom_user_application_domain(ut2004_t, ut2004_exec_t)
+
+allow ut2004_t self:tcp_socket create_socket_perms;
+allow ut2004_t self:udp_socket create_socket_perms;
+
+corenet_tcp_bind_generic_node(ut2004_t)
+corenet_udp_bind_generic_node(ut2004_t)
+
+# gamespy port
+corenet_tcp_connect_unreserved_ports(ut2004_t)
+# server ports
+corenet_udp_bind_all_unreserved_ports(ut2004_t)
+corenet_udp_bind_interwise_port(ut2004_t)
+
+userdom_use_inherited_user_terminals(ut2004_t)
+
+sysnet_read_config(ut2004_t)

@@ -1,11 +1,19 @@
 policy_module(myunconfineduser, 1.0.0)
 
-optional_policy(`
-	gen_require(`
-		type unconfined_t;
-		role unconfined_r;
-	')
 
+optional_policy(`
+gen_require(`
+	type unconfined_t;
+	role unconfined_r;
+')
 	webkitpp_role_template(unconfined, unconfined_r, unconfined_t)
 	gtalkplugin_role_template(unconfined, unconfined_r, unconfined_t)
+')
+
+optional_policy(`
+gen_require(`
+	type unconfined_t;
+	role unconfined_r;
+')
+        ut2004_run(unconfined_r, unconfined_t)
 ')
