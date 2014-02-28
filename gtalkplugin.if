@@ -113,6 +113,15 @@ template(`gtalkplugin_role_template',`
 	optional_policy(`
 		webkit_spec_dgram_sendto_pp($1, $1_gtalkplugin_t)
 	')
+ 
+	# hack, dont want to make sandbox pulseaudio_client if possible
+   	optional_policy(`
+        gen_require(`
+            attribute sandbox_x_domain;
+        ')
+
+        allow $1_gtalkplugin_t sandbox_x_domain:process signull;
+    ')
 ')
 
 ########################################

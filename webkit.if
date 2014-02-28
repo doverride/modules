@@ -159,7 +159,16 @@ template(`webkitpp_role_template',`
 
 	optional_policy(`
 		pulseaudio_run($1_webkitpp_t, $2)
-		domain_system_change_exemption($1_webkitpp_t)
+	')
+
+	# hack because theres no fs_mmap_hugetlbfs_files().
+	# and i refuse to use fs_exec_hugetlbfs_files()
+	optional_policy(`
+		gen_require(`
+			type hugetlbfs_t;
+		')
+
+		allow $1_webkitpp_t hugetlbfs_t:file mmap_file_perms;
 	')
 ')
 
