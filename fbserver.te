@@ -1,0 +1,166 @@
+module fbserver 1.0;
+
+type fbserver_t;
+
+require {
+	attribute file_type;
+	type init_t;
+	class process transition;
+	role system_r;
+}
+
+# make this a file_type
+type fbserver_exec_t;
+typeattribute fbserver_exec_t file_type;
+
+role system_r types fbserver_t;
+
+type_transition init_t fbserver_exec_t:process fbserver_t;
+
+require {
+	type unconfined_t;
+	type lib_t;
+	type fbserver_t;
+	type ld_so_t;
+	type init_t;
+	type usr_t;
+	type syslogd_t;
+	type etc_t;
+	type node_t;
+	type kernel_t;
+	type locale_t;
+	type devlog_t;
+	type fbserver_exec_t;
+	type ld_so_cache_t;
+	type null_device_t;
+	type unreserved_port_t;
+	class process { fork sigchld signal transition siginh getattr noatsecure rlimitinh };
+	class unix_stream_socket { read write getattr };
+	class chr_file { read open };
+	class tcp_socket { name_bind setopt bind create node_bind listen accept };
+	class fd use;
+	class file { getattr entrypoint read open execute };
+	class sock_file write;
+	class lnk_file read;
+	class unix_dgram_socket { write create connect sendto };
+	class udp_socket { name_bind bind create node_bind };
+	class dir { search getattr };
+}
+
+#============= fbserver_t ==============
+# logging to syslog/journald
+allow fbserver_t devlog_t:sock_file write;
+
+# reading /etc/fb-server.conf
+allow fbserver_t etc_t:dir search;
+allow fbserver_t etc_t:file { read getattr open };
+
+# related to executing /usr/bin/fb-server
+allow fbserver_t fbserver_exec_t:file { read entrypoint };
+
+# systemd/init parent of fb-server
+allow fbserver_t init_t:fd use;
+allow fbserver_t init_t:process sigchld;
+allow fbserver_t init_t:unix_stream_socket { read write getattr };
+
+# logging to journald/syslog
+allow fbserver_t kernel_t:unix_dgram_socket sendto;
+
+# using libraries
+allow fbserver_t ld_so_cache_t:file { read getattr open };
+allow fbserver_t ld_so_t:file read;
+allow fbserver_t lib_t:dir search;
+allow fbserver_t lib_t:file { read getattr open execute };
+allow fbserver_t lib_t:lnk_file read;
+
+# localization ( example /etc/localtime)
+allow fbserver_t locale_t:dir search;
+allow fbserver_t locale_t:file { read getattr open };
+allow fbserver_t locale_t:lnk_file read;
+
+# networking: not using labeled networking
+
+allow fbserver_t node_t:tcp_socket node_bind;
+allow fbserver_t node_t:udp_socket node_bind;
+
+# read /dev/null
+allow fbserver_t null_device_t:chr_file { read open };
+
+# processes fork
+allow fbserver_t self:process fork;
+
+# network related
+allow fbserver_t self:tcp_socket { bind create setopt listen accept };
+allow fbserver_t self:udp_socket { bind create };
+
+# probably related to logging
+allow fbserver_t self:unix_dgram_socket { write create connect };
+
+# binding tcp and udp socket to generic unreserved ports (>1024)
+# not going to associate private port types
+allow fbserver_t unreserved_port_t:tcp_socket name_bind;
+allow fbserver_t unreserved_port_t:udp_socket name_bind;
+
+# traversing /usr
+allow fbserver_t usr_t:dir search;
+
+# init/systemd reading fb-server state files (/proc/$fb-server)
+allow init_t fbserver_t:dir search;
+allow init_t fbserver_t:file { read getattr open };
+allow init_t fbserver_t:process { signal transition };
+dontaudit init_t fbserver_t:process { siginh noatsecure rlimitinh };
+
+# logging reading fb-server state (/proc/$fb-server)
+allow syslogd_t fbserver_t:dir search;
+allow syslogd_t fbserver_t:file { read getattr open };
+allow syslogd_t fbserver_t:lnk_file read;
+
+# me reading fb-server state (ps auxZ | grep fb-server)
+allow unconfined_t fbserver_t:dir { search getattr };
+allow unconfined_t fbserver_t:file { read getattr open };
+allow unconfined_t fbserver_t:process getattr;
+
+require {
+	type fbserver_t;
+	type root_t;
+	class dir search;
+}
+
+# fb-server traversing /
+allow fbserver_t root_t:dir search;
+
+require {
+	type fbserver_t;
+	type device_t;
+	class dir search;
+}
+
+#fb-server traversing /dev
+allow fbserver_t device_t:dir search;
+
+require {
+	type unconfined_t;
+	type fbserver_t;
+	class lnk_file read;
+	class dir { read open };
+}
+
+# these allow me to netstat -antlp fbserver
+allow unconfined_t fbserver_t:dir { read open };
+allow unconfined_t fbserver_t:lnk_file read;
+
+require {
+	class tcp_socket { write read };
+	class udp_socket read;
+}
+
+# needed to connect
+allow fbserver_t self:tcp_socket { write read };
+allow fbserver_t self:udp_socket read;
+
+require {
+	type fbserver_t;
+	class udp_socket write;
+}
+
+allow fbserver_t self:udp_socket write;

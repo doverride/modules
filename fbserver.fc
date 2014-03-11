@@ -1,0 +1,2 @@
+/usr/bin/fb-server -- system_u:object_r:fbserver_exec_t:s0
+
