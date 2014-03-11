@@ -1,0 +1,26 @@
+## <summary>BitTorrent client based on libtorrent.</summary>
+
+#######################################
+## <summary>
+## Execute rtorrent with a domain transition,
+## and allow the specified role the rtorrent_t domain.
+## </summary>
+## <param name="role">
+## <summary>
+## Role allowed access.
+## </summary>
+## </param>
+## <param name="domain">
+## <summary>
+## Domain allowed to transition.
+## </summary>
+## </param>
+#
+template(`rtorrent_run',`
+        gen_require(`
+                type rtorrent_t, rtorrent_exec_t;
+        ')
+
+        domtrans_pattern($2, rtorrent_exec_t, rtorrent_t)
+        role $1 types rtorrent_t;
+')

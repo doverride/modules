@@ -25,3 +25,11 @@ gen_require(`
 ')
         irc_role(unconfined_r, unconfined_t)
 ')
+
+optional_policy(`
+gen_require(`
+	type unconfined_t;
+	role unconfined_r;
+')
+        rtorrent_run(unconfined_r, unconfined_t)
+')

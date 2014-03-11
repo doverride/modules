@@ -1,0 +1,42 @@
+policy_module(rtorrent, 1.0.0)
+
+type rtorrent_t;
+type rtorrent_exec_t;
+userdom_user_application_domain(rtorrent_t, rtorrent_exec_t)
+
+type rtorrent_home_conf_t;
+userdom_user_home_content(rtorrent_home_conf_t)
+
+type rtorrent_home_t;
+userdom_user_home_content(rtorrent_home_t)
+
+allow rtorrent_t self:process signal;
+allow rtorrent_t self:tcp_socket create_stream_socket_perms;
+allow rtorrent_t self:udp_socket create_socket_perms;
+
+allow rtorrent_t rtorrent_home_conf_t:file read_file_perms;
+
+manage_dirs_pattern(rtorrent_t, rtorrent_home_t, rtorrent_home_t)
+manage_files_pattern(rtorrent_t, rtorrent_home_t, rtorrent_home_t)
+
+dev_read_urand(rtorrent_t)
+
+files_list_home(rtorrent_t)
+
+fs_getattr_xattr_fs(rtorrent_t)
+
+userdom_list_user_home_dirs(rtorrent_t)
+
+userdom_use_inherited_user_terminals(rtorrent_t)
+
+# tracker
+corenet_tcp_bind_generic_node(rtorrent_t)
+# dht
+corenet_udp_bind_generic_node(rtorrent_t)
+
+# tracker
+corenet_tcp_bind_all_unreserved_ports(rtorrent_t)
+corenet_tcp_connect_all_unreserved_ports(rtorrent_t)
+corenet_tcp_connect_all_ephemeral_ports(rtorrent_t)
+# dht
+corenet_udp_bind_all_unreserved_ports(rtorrent_t)
