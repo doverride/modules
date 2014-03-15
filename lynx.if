@@ -1,0 +1,47 @@
+## <summary>A text-based Web browser.</summary>
+
+#######################################
+## <summary>
+##      Execute lynx in the lynx domain.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed to transition.
+##      </summary>
+## </param>
+#
+interface(`lynx_domtrans',`
+        gen_require(`
+                type lynx_t, lynx_exec_t;
+        ')
+
+        corecmd_search_bin($1)
+        domtrans_pattern($1, lynx_exec_t, lynx_t)
+')
+
+########################################
+## <summary>
+##      Execute lynx in the lynx domain,
+##      and allow the specified role
+##      the lynx domain.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed to transition.
+##      </summary>
+## </param>
+## <param name="role">
+##      <summary>
+##      Role allowed to access.
+##      </summary>
+## </param>
+## <rolecap/>
+#
+interface(`lynx_run',`
+        gen_require(`
+                attribute_role lynx_roles;
+        ')
+
+        lynx_domtrans($1)
+        roleattribute $2 lynx_roles;
+')

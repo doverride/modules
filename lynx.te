@@ -1,0 +1,43 @@
+policy_module(lynx, 1.0.0)
+
+attribute_role lynx_roles;
+
+type lynx_t;
+type lynx_exec_t;
+userdom_user_application_domain(lynx_t, lynx_exec_t)
+role lynx_roles types lynx_t;
+
+type lynx_home_t;
+userdom_user_home_content(lynx_home_t)
+
+allow lynx_t self:process signal;
+allow lynx_t self:tcp_socket create_socket_perms;
+allow lynx_t self:udp_socket create_socket_perms;
+
+allow lynx_t lynx_home_t:file manage_file_perms;
+userdom_user_home_dir_filetrans(lynx_t, lynx_home_t, file)
+
+kernel_getattr_core_if(lynx_t)
+
+corenet_tcp_connect_http_port(lynx_t)
+
+# its going nuts
+dev_getattr_all_blk_files(lynx_t)
+dev_getattr_all_chr_files(lynx_t)
+
+files_dontaudit_getattr_all_dirs(lynx_t)
+files_dontaudit_getattr_all_files(lynx_t)
+files_dontaudit_getattr_all_sockets(lynx_t)
+
+init_getattr_initctl(lynx_t)
+init_read_utmp(lynx_t)
+
+sysnet_read_config(lynx_t)
+
+term_search_ptys(lynx_t)
+
+userdom_use_inherited_user_terminals(lynx_t)
+
+optional_policy(`
+	newsbeuter_rw_inherited_home_files(lynx_t)
+')

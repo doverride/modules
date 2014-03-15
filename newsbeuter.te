@@ -1,0 +1,10 @@
+policy_module(newsbeuter, 1.0.0)
+
+# /usr/bin/newsbeuter
+type newsbeuter_exec_t;
+
+# ~/.config/newsbeuter, ~/.local/share/newsbeuter, ~/.newsbeuter
+type newsbeuter_home_t;
+userdom_user_home_content(newsbeuter_home_t)
+
+attribute_role newsbeuter_roles;

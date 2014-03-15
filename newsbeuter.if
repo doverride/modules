@@ -1,0 +1,109 @@
+## <summary>Configurable text-based feed reader.</summary>
+
+#######################################
+## <summary>
+##	The role template for Newsbeuter.
+## </summary>
+## <param name="role_prefix">
+##	<summary>
+##	The prefix of the user domain (e.g., user
+##	is the prefix for user_t).
+##	</summary>
+## </param>
+## <param name="user_role">
+##	<summary>
+##	The role associated with the user domain.
+##	</summary>
+## </param>
+## <param name="user_domain">
+##	<summary>
+##	The type of the user domain.
+##	</summary>
+## </param>
+#
+template(`newsbeuter_role_template',`
+	gen_require(`
+		type newsbeuter_exec_t, newsbeuter_home_t;
+		attribute_role newsbeuter_roles;
+	')
+
+	########################################
+	#
+	# Declarations
+	#
+
+	## <desc>
+	##	<p>
+	##	Determine whether the specified user
+	##	executes newsbeuter with a domain transition.
+	##	</p>
+	## </desc>
+	gen_tunable(newsbeuter_$1_domain_transition, true)
+
+	roleattribute $2 newsbeuter_roles;
+
+	type $1_newsbeuter_t;
+	userdom_user_application_domain($1_newsbeuter_t, newsbeuter_exec_t)
+	role newsbeuter_roles types $1_newsbeuter_t;
+
+	########################################
+	#
+	# Policy
+	#
+
+	allow $1_newsbeuter_t self:tcp_socket create_socket_perms;
+	allow $1_newsbeuter_t self:udp_socket create_socket_perms;
+
+	allow $1_newsbeuter_t newsbeuter_home_t:dir { create_dir_perms add_entry_dir_perms del_entry_dir_perms };
+	allow $1_newsbeuter_t newsbeuter_home_t:file manage_file_perms;
+
+	userdom_search_user_home_content($1_newsbeuter_t)
+	userdom_user_home_dir_filetrans($1_newsbeuter_t, newsbeuter_home_t, dir, ".newsbeuter")
+
+	kernel_read_system_state($1_newsbeuter_t)
+
+	corenet_tcp_connect_http_port($1_newsbeuter_t)
+
+	# runs a shell to open feed in browser
+	corecmd_exec_shell($1_newsbeuter_t)
+
+	dev_read_urand($1_newsbeuter_t)
+
+	sysnet_read_config($1_newsbeuter_t)
+
+	userdom_use_inherited_user_terminals($1_newsbeuter_t)
+
+	tunable_policy(`newsbeuter_$1_domain_transition',`
+		domtrans_pattern($3, newsbeuter_exec_t, $1_newsbeuter_t)
+	',`
+		can_exec($3, newsbeuter_exec_t)
+	')
+
+	optional_policy(`
+		gnome_list_home_config($1_newsbeuter_t)
+	')
+
+	optional_policy(`
+		lynx_run($1_newsbeuter_t, newsbeuter_roles)
+	')
+')
+
+#######################################
+## <summary>
+##	Read and write inherited newsbeuter
+##	user home content files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`newsbeuter_rw_inherited_home_files',`
+	gen_require(`
+		type newsbeuter_home_t;
+	')
+
+	userdom_search_user_home_dirs($1)
+	allow $1 newsbeuter_home_t:file { read write };
+')

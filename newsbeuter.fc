@@ -1,0 +1,6 @@
+HOME_DIR/\.newsbeuter(/.*)?	gen_context(system_u:object_r:newsbeuter_home_t,s0)
+
+HOME_DIR/\.config/newsbeuter(/.*)? gen_context(system_u:object_r:newsbeuter_home_t,s0)
+HOME_DIR/\.local/share/newsbeuter(/.*)? gen_context(system_u:object_r:newsbeuter_home_t,s0)
+
+/usr/bin/newsbeuter	-- gen_context(system_u:object_r:newsbeuter_exec_t,s0)
