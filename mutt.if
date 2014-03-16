@@ -1,0 +1,107 @@
+## <summary>A text mode mail user agent.</summary>
+
+#######################################
+## <summary>
+##	The role template for Mutt.
+## </summary>
+## <param name="role_prefix">
+##	<summary>
+##	The prefix of the user domain (e.g., user
+##	is the prefix for user_t).
+##	</summary>
+## </param>
+## <param name="user_role">
+##	<summary>
+##	The role associated with the user domain.
+##	</summary>
+## </param>
+## <param name="user_domain">
+##	<summary>
+##	The type of the user domain.
+##	</summary>
+## </param>
+#
+template(`mutt_role_template',`
+	gen_require(`
+		type mutt_exec_t, mutt_home_t, mutt_tmp_t;
+		attribute_role mutt_roles;
+	')
+
+	########################################
+	#
+	# Declarations
+	#
+
+	## <desc>
+	##	<p>
+	##	Determine whether the specified user
+	##	executes mutt with a domain transition.
+	##	</p>
+	## </desc>
+	gen_tunable(mutt_$1_domain_transition, true)
+
+	roleattribute $2 mutt_roles;
+
+	type $1_mutt_t;
+	userdom_user_application_domain($1_mutt_t, mutt_exec_t)
+	role mutt_roles types $1_mutt_t;
+
+	########################################
+	#
+	# Policy
+	#
+
+	allow $1_mutt_t self:process setrlimit;
+
+	allow $1_mutt_t mutt_home_t:file manage_file_perms;
+	userdom_user_home_dir_filetrans($1_mutt_t, mutt_home_t, file, ".mutt_cache")
+	userdom_user_home_dir_filetrans($1_mutt_t, mutt_home_t, file, ".mutt_certificates")
+
+	allow $1_mutt_t mutt_tmp_t:dir manage_dir_perms;
+	allow $1_mutt_t mutt_tmp_t:file manage_file_perms;
+	files_tmp_filetrans($1_mutt_t, mutt_tmp_t, dir)
+
+	# pgpewrap, nano
+	corecmd_exec_bin($1_mutt_t)
+
+	kernel_read_system_state($1_mutt_t)
+
+	corenet_tcp_connect_pop_port($1_mutt_t)
+	corenet_tcp_connect_smtp_port($1_mutt_t)
+
+	corecmd_exec_shell($1_mutt_t)
+
+	dev_read_urand($1_mutt_t)
+
+	auth_use_nsswitch($1_mutt_t)
+
+	logging_send_syslog_msg($1_mutt_t)
+
+	userdom_use_inherited_user_terminals($1_mutt_t)
+
+	tunable_policy(`mutt_$1_domain_transition',`
+		domtrans_pattern($3, mutt_exec_t, $1_mutt_t)
+	',`
+		can_exec($3, mutt_exec_t)
+	')
+
+	optional_policy(`
+		gen_require(`
+			type user_home_t;
+		')
+
+		read_files_pattern($1_mutt_t, user_home_t, user_home_t)
+	')
+
+	optional_policy(`
+		gpg_role(mutt_roles, $1_mutt_t)
+	')
+
+	optional_policy(`
+		gen_require(`
+			type user_tmp_t;
+		')
+
+		stream_connect_pattern($1_mutt_t, user_tmp_t, user_tmp_t, $3)
+	')
+')

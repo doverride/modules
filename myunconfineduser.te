@@ -49,3 +49,11 @@ gen_require(`
 ')
 	newsbeuter_role_template(unconfined, unconfined_r, unconfined_t)
 ')
+
+optional_policy(`
+gen_require(`
+	type unconfined_t;
+	role unconfined_r;
+')
+	mutt_role_template(unconfined, unconfined_r, unconfined_t)
+')
