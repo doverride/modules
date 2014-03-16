@@ -1,0 +1,5 @@
+HOME_DIR/\.gpg-agent-info -- gen_context(system_u:object_r:gpg_log_home_t,s0)
+HOME_DIR/\.gnupg/reader_.*\.status	--	gen_context(system_u:object_r:scdaemon_home_t,s0)
+
+/usr/libexec/scdaemon	--	gen_context(system_u:object_r:scdaemon_exec_t,s0)
+/usr/libexec/gnupg-pcsc-wrapper	--	gen_context(system_u:object_r:gpg_pcsc_wrapper_exec_t,s0)

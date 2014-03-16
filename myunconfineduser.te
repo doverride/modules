@@ -23,6 +23,14 @@ gen_require(`
 	type unconfined_t;
 	role unconfined_r;
 ')
+        gpg_role(unconfined_r, unconfined_t)
+')
+
+optional_policy(`
+gen_require(`
+	type unconfined_t;
+	role unconfined_r;
+')
         irc_role(unconfined_r, unconfined_t)
 ')
 

@@ -1,0 +1,61 @@
+policy_module(mygpg, 1.0.0)
+
+type gpg_log_home_t;
+userdom_user_home_content(gpg_log_home_t)
+
+type scdaemon_t;
+type scdaemon_exec_t;
+userdom_user_application_domain(scdaemon_t, scdaemon_exec_t)
+
+type scdaemon_home_t;
+userdom_user_home_content(scdaemon_home_t)
+
+type scdaemon_tmp_t;
+files_tmp_file(scdaemon_tmp_t)
+
+type gpg_pcsc_wrapper_t;
+type gpg_pcsc_wrapper_exec_t;
+userdom_user_application_domain(gpg_pcsc_wrapper_t, gpg_pcsc_wrapper_exec_t)
+
+optional_policy(`
+	gen_require(`
+		type gpg_agent_t, gpg_pinentry_t, gpg_secret_t;
+	')
+
+	allow gpg_agent_t gpg_log_home_t:file manage_file_perms;
+	userdom_user_home_dir_filetrans(gpg_agent_t, gpg_log_home_t, file, ".gpg-agent-info")
+
+	domtrans_pattern(gpg_agent_t, scdaemon_exec_t, scdaemon_t)
+	allow scdaemon_t gpg_agent_t:process signal;
+
+	domtrans_pattern(scdaemon_t, gpg_pcsc_wrapper_exec_t, gpg_pcsc_wrapper_t)
+
+	fs_getattr_xattr_fs(gpg_pinentry_t)
+
+	allow scdaemon_t self:netlink_kobject_uevent_socket create_socket_perms;
+
+	allow scdaemon_t scdaemon_home_t:file manage_file_perms;
+	allow scdaemon_t gpg_secret_t:dir add_entry_dir_perms;
+	filetrans_pattern(scdaemon_t, gpg_secret_t, scdaemon_home_t, file)
+
+	allow scdaemon_t scdaemon_tmp_t:dir manage_dir_perms;
+	allow scdaemon_t scdaemon_tmp_t:sock_file manage_sock_file_perms;
+	files_tmp_filetrans(scdaemon_t, scdaemon_tmp_t, dir)
+
+	userdom_search_user_home_dirs(scdaemon_t)
+
+	dev_read_sysfs(scdaemon_t)
+
+	optional_policy(`
+		gen_require(`
+			role unconfined_r;
+		')
+
+		role unconfined_r types { scdaemon_t gpg_pcsc_wrapper_t };
+	')
+
+	optional_policy(`
+		pcscd_stream_connect(gpg_pcsc_wrapper_t)
+	')
+')
+
