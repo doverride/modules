@@ -25,9 +25,14 @@ files_list_home(rtorrent_t)
 
 fs_getattr_xattr_fs(rtorrent_t)
 
+sysnet_read_config(rtorrent_t)
+
 userdom_list_user_home_dirs(rtorrent_t)
 
 userdom_use_inherited_user_terminals(rtorrent_t)
+
+# tcp:260 openport
+# allow rtorrent_t reserved_port_t:tcp_socket name_connect;
 
 # tracker
 corenet_tcp_bind_generic_node(rtorrent_t)
