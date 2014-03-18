@@ -150,8 +150,10 @@ template(`webkitpp_role_template',`
 
 	optional_policy(`
 		gen_require(`
-			type mozilla_home_t;
+			type mozilla_home_t, mozilla_plugin_t;
 		')
+
+		allow $1_webkitpp_t mozilla_plugin_t:sem rw_sem_perms;
 
 		allow $1_webkitpp_t mozilla_home_t:dir manage_dir_perms;
 		manage_files_pattern($1_webkitpp_t, mozilla_home_t, mozilla_home_t)

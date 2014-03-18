@@ -95,6 +95,10 @@ template(`gtalkplugin_role_template',`
 	xserver_user_x_domain_template($1_gtalkplugin, $1_gtalkplugin_t, $1_gtalkplugin_tmpfs_t)
 
 	optional_policy(`
+		dbus_system_bus_client($1_gtalkplugin_t)
+	')
+
+	optional_policy(`
 		gnome_search_gconf_data_dir($1_gtalkplugin_t)
 	')
 
