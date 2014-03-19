@@ -31,8 +31,8 @@ userdom_list_user_home_dirs(rtorrent_t)
 
 userdom_use_inherited_user_terminals(rtorrent_t)
 
-# tcp:260 openport
-# allow rtorrent_t reserved_port_t:tcp_socket name_connect;
+# for some reason it was trying to connect to tcp:260
+corenet_dontaudit_tcp_connect_all_reserved_ports(rtorrent_t)
 
 # tracker
 corenet_tcp_bind_generic_node(rtorrent_t)
