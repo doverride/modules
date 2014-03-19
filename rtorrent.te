@@ -28,6 +28,8 @@ fs_getattr_xattr_fs(rtorrent_t)
 sysnet_read_config(rtorrent_t)
 
 userdom_list_user_home_dirs(rtorrent_t)
+# traverse /mnt/crypto/rtorrent
+userdom_search_user_home_content(rtorrent_t)
 
 userdom_use_inherited_user_terminals(rtorrent_t)
 
