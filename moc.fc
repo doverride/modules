@@ -1,0 +1,3 @@
+HOME_DIR/\.moc(/.*)?    gen_context(system_u:object_r:moc_home_t,s0)
+
+/usr/bin/mocp           --      gen_context(system_u:object_r:moc_exec_t,s0)

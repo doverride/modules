@@ -1,0 +1,15 @@
+policy_module(moc, 1.0.0)
+
+type moc_exec_t;
+
+type moc_home_t;
+userdom_user_home_content(moc_home_t)
+
+type moc_tmpfs_t;
+userdom_user_tmpfs_content(moc_tmpfs_t)
+
+attribute_role moc_roles;
+
+optional_policy(`
+        pulseaudio_tmpfs_content(moc_tmpfs_t)
+')

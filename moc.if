@@ -1,0 +1,142 @@
+## <summary>Console audio player for Linux/UNIX.</summary>
+
+#######################################
+## <summary>
+##      The role template for MOC.
+## </summary>
+## <param name="role_prefix">
+##      <summary>
+##      The prefix of the user domain (e.g., user
+##      is the prefix for user_t).
+##      </summary>
+## </param>
+## <param name="user_role">
+##      <summary>
+##      The role associated with the user domain.
+##      </summary>
+## </param>
+## <param name="user_domain">
+##      <summary>
+##      The type of the user domain.
+##      </summary>
+## </param>
+#
+template(`moc_role_template',`
+        gen_require(`
+                type moc_exec_t, moc_home_t, moc_tmpfs_t;
+                attribute_role moc_roles;
+        ')
+
+        ########################################
+        #
+        # Declarations
+        #
+
+        ## <desc>
+        ##      <p>
+        ##      Determine whether the specified user
+        ##      executes MOC with a domain transition.
+        ##      </p>
+        ## </desc>
+        gen_tunable(moc_$1_domain_transition, true)
+
+        roleattribute $2 moc_roles;
+
+        type $1_moc_t;
+        userdom_user_application_domain($1_moc_t, moc_exec_t)
+        role moc_roles types $1_moc_t;
+
+        ########################################
+        #
+        # Policy
+        #
+
+        allow $1_moc_t self:unix_stream_socket connectto;
+        allow $1_moc_t self:netlink_route_socket r_netlink_socket_perms;
+        allow $1_moc_t self:tcp_socket create_socket_perms;
+        allow $1_moc_t self:udp_socket create_socket_perms;
+
+        allow $1_moc_t moc_home_t:dir manage_dir_perms;
+        allow $1_moc_t moc_home_t:sock_file manage_sock_file_perms;
+        allow $1_moc_t moc_home_t:file manage_file_perms;
+        userdom_user_home_dir_filetrans($1_moc_t, moc_home_t, dir, ".moc")
+
+        allow $1_moc_t moc_tmpfs_t:file manage_file_perms;
+        fs_tmpfs_filetrans($1_moc_t, moc_tmpfs_t, file)
+
+        kernel_read_system_state($1_moc_t)
+        kernel_dontaudit_getattr_core_if($1_moc_t)
+
+        corenet_tcp_connect_http_port($1_moc_t)
+
+        dev_dontaudit_getattr_all($1_moc_t)
+        dev_read_urand($1_moc_t)
+
+        domain_dontaudit_search_all_domains_state($1_moc_t)
+
+        # i also have music in /mnt/crypto and /run/media/.*
+        files_dontaudit_getattr_all_dirs($1_moc_t)
+        files_dontaudit_getattr_all_pipes($1_moc_t)
+        files_dontaudit_getattr_all_sockets($1_moc_t)
+        files_dontaudit_getattr_all_files($1_moc_t)
+        files_dontaudit_getattr_all_symlinks($1_moc_t)
+        files_list_home($1_moc_t)
+        files_list_root($1_moc_t)
+        files_list_mnt($1_moc_t)
+        files_list_var($1_moc_t)
+        files_list_pids($1_moc_t)
+
+        sysnet_read_config($1_moc_t)
+
+        userdom_use_inherited_user_terminals($1_moc_t)
+        userdom_read_home_audio_files($1_moc_t)
+
+        tunable_policy(`moc_$1_domain_transition',`
+                domtrans_pattern($3, moc_exec_t, $1_moc_t)
+        ',`
+                can_exec($3, moc_exec_t)
+        ')
+
+        optional_policy(`
+                alsa_read_rw_config($1_moc_t)
+        ')
+
+        optional_policy(`
+                pulseaudio_run($1_moc_t, $2)
+        ')
+
+        optional_policy(`
+                gen_require(`
+                        type user_tmp_t, user_home_t;
+                ')
+
+                # pulseaudio in the user domain
+                stream_connect_pattern($1_moc_t, user_tmp_t, user_tmp_t, $3)
+
+                dontaudit $1_moc_t user_tmp_t:dir list_dir_perms;
+
+                # let it list and read generic user home dirs and files resp.
+                allow $1_moc_t user_home_t:dir list_dir_perms;
+                allow $1_moc_t user_home_t:file read_file_perms;
+                allow $1_moc_t user_home_t:lnk_file read_lnk_file_perms;
+        ')
+
+        optional_policy(`
+                gen_require(`
+                        type rtorrent_home_t;
+                ')
+
+                # read my torrents
+                allow $1_moc_t rtorrent_home_t:dir list_dir_perms;
+                allow $1_moc_t rtorrent_home_t:file read_file_perms;
+        ')
+
+        optional_policy(`
+                unconfined_signull($1_moc_t)
+        ')
+
+        optional_policy(`
+                xserver_stream_connect($1_moc_t)
+                xserver_read_xdm_pid($1_moc_t)
+        ')
+')
