@@ -1,0 +1,86 @@
+## <summary>Bash Twitter/Identi.ca Idiocy.</summary>
+
+#######################################
+## <summary>
+##	The role template for BTI.
+## </summary>
+## <param name="role_prefix">
+##	<summary>
+##	The prefix of the user domain (e.g., user
+##	is the prefix for user_t).
+##	</summary>
+## </param>
+## <param name="user_role">
+##	<summary>
+##	The role associated with the user domain.
+##	</summary>
+## </param>
+## <param name="user_domain">
+##	<summary>
+##	The type of the user domain.
+##	</summary>
+## </param>
+#
+template(`bti_role_template',`
+	gen_require(`
+		type bti_exec_t, bti_home_t;
+		attribute_role bti_roles;
+	')
+
+	########################################
+	#
+	# Declarations
+	#
+
+	## <desc>
+	##	<p>
+	##	Determine whether the specified user
+	##	executes BTI with a domain transition.
+	##	</p>
+	## </desc>
+	gen_tunable(bti_$1_domain_transition, true)
+
+	roleattribute $2 bti_roles;
+
+	type $1_bti_t;
+	userdom_user_application_domain($1_bti_t, bti_exec_t)
+	role bti_roles types $1_bti_t;
+
+	########################################
+	#
+	# Policy
+	#
+
+    allow $1_bti_t bti_home_t:file read_file_perms;
+    userdom_search_user_home_dirs($1_bti_t)
+
+    kernel_read_system_state($1_bti_t)
+
+    corecmd_exec_bin($1_bti_t)
+    corecmd_exec_shell($1_bti_t)
+
+    corenet_tcp_connect_http_port($1_bti_t)
+
+    auth_use_nsswitch($1_bti_t)
+
+    dev_read_urand($1_bti_t)
+
+    files_list_tmp($1_bti_t)
+
+    userdom_manage_home_certs($1_bti_t)
+    userdom_use_inherited_user_terminals($1_bti_t)
+
+	tunable_policy(`bti_$1_domain_transition',`
+		domtrans_pattern($3, bti_exec_t, $1_bti_t)
+	',`
+		can_exec($3, bti_exec_t)
+	')
+
+    optional_policy(`
+        gen_require(`
+                type tmp_t;
+        ')
+
+        dontaudit $1_bti_t tmp_t:dir audit_access;
+    ')
+')

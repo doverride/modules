@@ -13,6 +13,7 @@ userdom_user_home_content(rtorrent_home_t)
 allow rtorrent_t self:process signal;
 allow rtorrent_t self:tcp_socket create_stream_socket_perms;
 allow rtorrent_t self:udp_socket create_socket_perms;
+allow rtorrent_t self:netlink_route_socket r_netlink_socket_perms;
 
 allow rtorrent_t rtorrent_home_conf_t:file read_file_perms;
 
@@ -22,6 +23,7 @@ manage_files_pattern(rtorrent_t, rtorrent_home_t, rtorrent_home_t)
 dev_read_urand(rtorrent_t)
 
 files_list_home(rtorrent_t)
+files_list_mnt(rtorrent_t)
 
 fs_getattr_xattr_fs(rtorrent_t)
 
@@ -29,7 +31,7 @@ sysnet_read_config(rtorrent_t)
 
 userdom_list_user_home_dirs(rtorrent_t)
 # traverse /mnt/crypto/rtorrent
-userdom_search_user_home_content(rtorrent_t)
+userdom_list_user_home_content(rtorrent_t)
 
 userdom_use_inherited_user_terminals(rtorrent_t)
 

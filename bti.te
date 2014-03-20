@@ -1,0 +1,8 @@
+policy_module(bti, 1.0.0)
+
+type bti_exec_t;
+
+type bti_home_t;
+userdom_user_home_content(bti_home_t)
+
+attribute_role bti_roles;

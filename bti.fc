@@ -1,0 +1,3 @@
+HOME_DIR/\.bti  --      gen_context(system_u:object_r:bti_home_t,s0)
+
+/usr/bin/bti    --      gen_context(system_u:object_r:bti_exec_t,s0)

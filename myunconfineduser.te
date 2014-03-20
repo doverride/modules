@@ -65,3 +65,11 @@ gen_require(`
 ')
 	moc_role_template(unconfined, unconfined_r, unconfined_t)
 ')
+
+optional_policy(`
+gen_require(`
+	type unconfined_t;
+	role unconfined_r;
+')
+	bti_role_template(unconfined, unconfined_r, unconfined_t)
+')
