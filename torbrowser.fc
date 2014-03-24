@@ -8,6 +8,8 @@
 /mnt/crypto/tor-browser_en-US/\.config/ibus/bus  -l   <<none>>
 /mnt/crypto/tor-browser_en-US/\.esd_auth         --     <<none>>
 
+/mnt/crypto/tor-browser_en-US/Browser -d gen_context(system_u:object_r:sandbox_file_t,s0)
+
 /mnt/crypto/tor-browser_en-US/Browser/application\.ini  --      gen_context(system_u:object_r:etc_t,s0)
 /mnt/crypto/tor-browser_en-US/Browser/chrome\.manifest  --      gen_context(system_u:object_r:etc_t,s0)
 /mnt/crypto/tor-browser_en-US/Browser/dependentlibs\.list       --      gen_context(system_u:object_r:etc_t,s0)
