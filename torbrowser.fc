@@ -159,8 +159,11 @@
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps/webapps\.json -- <<none>>
 
+/mnt/crypto/tor-browser_en-US/Desktop -d gen_context(system_u:object_r:sandbox_file_t,s0)
+
 /mnt/crypto/tor-browser_en-US/Data/Tor/geoip                        --      gen_context(system_u:object_r:etc_t,s0)
 /mnt/crypto/tor-browser_en-US/Data/Tor/torrc                        --      gen_context(system_u:object_r:torbrowser_etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Tor/torrc\.orig\.1                --      gen_context(system_u:object_r:torbrowser_etc_t,s0)
 /mnt/crypto/tor-browser_en-US/Data/Tor/torrc-defaults                        --      gen_context(system_u:object_r:torbrowser_etc_t,s0)
 
 /mnt/crypto/tor-browser_en-US/Data/Tor -d gen_context(system_u:object_r:sandbox_file_t,s0)
