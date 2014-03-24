@@ -8,7 +8,7 @@ type torbrowser_etc_t;
 files_type(torbrowser_etc_t)
 
 if ( sandbox_torbrowser ) {
-   require { type sandbox_web_t, user_home_t, sandbox_web_client_t; }
+   require { type user_home_t, sandbox_web_client_t; }
    allow sandbox_web_client_t user_home_t:dir read;
 
    require { type pop_port_t, tor_port_t, websm_port_t, node_t; }
