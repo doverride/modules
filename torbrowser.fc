@@ -1,0 +1,213 @@
+/mnt/crypto/tor-browser_en-US   -d      gen_context(system_u:object_r:sandbox_file_t,s0)
+
+/mnt/crypto/tor-browser_en-US/\.cache   -d     <<none>>
+/mnt/crypto/tor-browser_en-US/\.cache/event-sound-cache\.tdb.*-redhat-linux-gnu -- <<none>>
+
+/mnt/crypto/tor-browser_en-US/\.config  -d     <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/ibus   -d     <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/ibus/bus  -l   <<none>>
+/mnt/crypto/tor-browser_en-US/\.esd_auth         --     <<none>>
+
+/mnt/crypto/tor-browser_en-US/Browser/application\.ini  --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/chrome\.manifest  --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/dependentlibs\.list       --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/omni\.ja                  --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/platform\.ini             --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/precomplete               --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/removed-files             --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/browser/blocklist\.xml    --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/chrome\.manifest  --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/omni\.ja          --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/browser/chrome/icons/default/default16\.png       --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/chrome/icons/default/default32\.png       --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/chrome/icons/default/default48\.png       --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/browser/components/libbrowsercomps\.so            --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/components/components\.manifest           --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/defaults/pref/channel-prefs\.js           --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/dictionaties/en-US\.aff           --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/dictionaties/en-US\.dic           --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/webapprt/omni\.ja           --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/webapprt/webapprt\.ini           --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/browser/extensions/\{972ce4c6-7e08-4474-a285-3208198ce6fd\}/icon\.png\      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/extensions/\{972ce4c6-7e08-4474-a285-3208198ce6fd\}/install\.rdf\      --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/browser/icons/mozicon\.png                                                   --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/amazondotcom\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/bing\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/duckduckgo\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/eBay\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/google\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/startpage\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/twitter\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/wikipedia\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/browser/searchplugins/yahoo\.xml                                      --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profiles\.ini                                                    --      gen_context(system_u:object_r:etc_t,s0)
+
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/bookmarks\.html                                 --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/\{73a6fe31-595d-460b-a920-fcc0f8843232\}\.xpi     --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/torbutton@torproject\.org\.xpi                                 --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/tor-launcher@torproject\.org\.xpi                                 --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/Changelog                                 --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome\.manifest                                 --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/install\.rdf                                     --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/about\.xul                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/fetch-source\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/fetch-source\.xul                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/meta-preferences\.xul                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/observatory-popup\.xul                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/observatory-preferences\.xul                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/observatory-warning\.xul                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/observatory-xul\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/preferences\.css                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/preferences\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/preferences\.xul                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/toolbar_button_binding\.xml                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/toolbar_button\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/toolbar_button\.xul                        --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/ApplicableList\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/ChannelReplacement\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/Cookie\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/HTTPS\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/HTTPSRules\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/IOUtil\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/NSS\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/Root-CAs\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/sha256\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/STS\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/Thread\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/code/X509ChainWhitelist\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/rules/00README                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/content/rules/default\.rulesets                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/https-everywhere\.css                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/cross\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/https-everywhere\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/https-everywhere-16\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/https-everywhere-16-gray\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/https-everywhere-24\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/https-everywhere-24-gray\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/https-everywhere-half-24\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/loop\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/ssl-observatory-messy\.jpg                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/tick\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/skin/tick-moot\.png                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/locale/en/https-everywhere\.dtd                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/locale/en/https-everywhere\.properties                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/chrome/locale/en/ssl-observatory\.dtd                        --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/components/https-everywhere\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/components/ssl-observatory\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions/https-everywhere@eff\.org/defaults/preferences/preferences\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/preferences/extension-overrides\.js                        --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/cert8\.db -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/addons\.sqlite -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/addons\.sqlite-journal -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/blocklist\.xml -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/compatibility\.ini -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/cookies\.sqlite -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/cookies\.sqlite-shm -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/cookies\.sqlite-wal -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/downloads\.sqlite -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions\.ini -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions\.sqlite -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/extensions\.sqlite-journal -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/key3\.db -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/localstore\.rdf -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/marionette\.log -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/mimeTypes\.rdf -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/\.parentlock -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/places\.sqlite -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/places\.sqlite-shm -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/places\.sqlite-wal -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/prefs\.js -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/search\.json -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/secmod\.db -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webappsstore\.sqlite -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webappsstore\.sqlite-shm -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webappsstore\.sqlite-wal -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/lock -- <<none>>
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/bookmarkbackups -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/HTTPSEverywhereUserRules -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-malware-simple\.cache --  <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-malware-simple\.pset --  <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-malware-simple\.sbstore --  <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-phish-simple\.cache --  <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-phish-simple\.pset --  <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-phish-simple\.sbstore --  <<none>>
+
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/startupCache -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/thumbnails -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps/webapps\.json -- <<none>>
+
+/mnt/crypto/tor-browser_en-US/Data/Tor/geoip                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Tor/torrc                        --      gen_context(system_u:object_r:torbrowser_etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Tor/torrc-defaults                        --      gen_context(system_u:object_r:torbrowser_etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Data/Tor -d gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Tor/cached-certs -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Tor/cached-microdesc-consensus -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Tor/cached-microdescs -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Tor/cached-microdescs\.new -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Tor/control_auth_cookie -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Tor/lock -- <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Tor/state -- <<none>>
+
+/mnt/crypto/tor-browser_en-US/Docs/ChangeLog\.txt                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Docs/PluggableTransports/LICENSE                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Docs/PluggableTransports/LICENSE\.PYTHON                        --      gen_context(system_u:object_r:etc_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Docs/sources/bundle\.inputs                        --      gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Docs/sources/versions                        --      gen_context(system_u:object_r:bin_t,s0)
+
+
+/mnt/crypto/tor-browser_en-US/start-tor-browser --      gen_context(system_u:object_r:bin_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Tor/libcrypto\.so\.1\.0\.0 --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Tor/libevent-2\.0\.so\.5  --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Tor/libssl\.so\.1\.0\.0    --      gen_context(system_u:object_r:lib_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Tor/tor                --      gen_context(system_u:object_r:bin_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/firefox        --      gen_context(system_u:object_r:bin_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/libfreebl3\.so  --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libmozalloc\.so     --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libmozsqlite3\.so   --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libnspr4\.so        --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libnss3\.so         --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libnssckbi\.so      --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libnssdbm3\.so      --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libnssutil3\.so     --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libplc4\.so         --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libplds4\.so        --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libsmime3\.so       --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libsoftokn3\.so     --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libssl3\.so         --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/libxul\.so          --      gen_context(system_u:object_r:lib_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/mozilla-xremote-client     --      gen_context(system_u:object_r:bin_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/plugin-container           --      gen_context(system_u:object_r:bin_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/run-mozilla\.sh             --      gen_context(system_u:object_r:bin_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/webapprt-stub              --      gen_context(system_u:object_r:bin_t,s0)
+
+/mnt/crypto/tor-browser_en-US/Browser/components/components\.manifest    --     gen_context(system_u:object_r:etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/components/libdbusservice\.so        --      gen_context(system_u:object_r:lib_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser/components/libmozgnome\.so           --      gen_context(system_u:object_r:lib_t,s0)

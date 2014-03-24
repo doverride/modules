@@ -1,0 +1,22 @@
+policy_module(torbrowser, 1.0.0)
+
+gen_require(` type bin_t, lib_t, etc_t, sandbox_file_t; ')
+
+bool sandbox_torbrowser true;
+
+type torbrowser_etc_t;
+files_type(torbrowser_etc_t)
+
+if ( sandbox_torbrowser ) {
+   require { type sandbox_web_t, user_home_t, sandbox_web_client_t; }
+   allow sandbox_web_client_t user_home_t:dir read;
+
+   require { type pop_port_t, tor_port_t, websm_port_t, node_t; }
+   allow sandbox_web_client_t tor_port_t:tcp_socket name_bind;
+   allow sandbox_web_client_t websm_port_t:tcp_socket name_connect;
+   allow sandbox_web_client_t pop_port_t:tcp_socket name_connect;
+   allow sandbox_web_client_t node_t:tcp_socket node_bind;
+   allow sandbox_web_client_t self:process setrlimit;
+   allow sandbox_web_client_t torbrowser_etc_t:file { read open getattr ioctl lock rename };
+}
+
