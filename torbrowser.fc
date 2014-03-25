@@ -4,6 +4,14 @@
 /mnt/crypto/tor-browser_en-US/\.cache/event-sound-cache\.tdb.*-redhat-linux-gnu -- <<none>>
 
 /mnt/crypto/tor-browser_en-US/\.config  -d     <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/pulse  -d     <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/pulse/.*-default-sink    --      <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/pulse/.*-runtime         -l      <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/pulse/.*-default-source  --      <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/pulse/.*-device-volume\.tdb  --      <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/pulse/.*-card-database\.tdb  --      <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/pulse/.*-stream-volumes\.tdb  --      <<none>>
+/mnt/crypto/tor-browser_en-US/\.config/pulse/cookie  --      <<none>>
 /mnt/crypto/tor-browser_en-US/\.config/ibus   -d     <<none>>
 /mnt/crypto/tor-browser_en-US/\.config/ibus/bus  -l   <<none>>
 /mnt/crypto/tor-browser_en-US/\.esd_auth         --     <<none>>
@@ -155,6 +163,7 @@
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-phish-simple\.sbstore --  <<none>>
 
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/startupCache -d                         <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/startupCache/startupCache\.8\.little    -- <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/thumbnails -d                           <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps -d <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps/webapps\.json -- <<none>>
