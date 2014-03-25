@@ -1,4 +1,4 @@
-/mnt/crypto/tor-browser_en-US   -d      gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US   -d      system_u:object_r:sandbox_file_t:s0:c122,c144
 
 /mnt/crypto/tor-browser_en-US/\.cache   -d     <<none>>
 /mnt/crypto/tor-browser_en-US/\.cache/event-sound-cache\.tdb.*-redhat-linux-gnu -- <<none>>
@@ -8,7 +8,7 @@
 /mnt/crypto/tor-browser_en-US/\.config/ibus/bus  -l   <<none>>
 /mnt/crypto/tor-browser_en-US/\.esd_auth         --     <<none>>
 
-/mnt/crypto/tor-browser_en-US/Browser -d gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Browser -d         system_u:object_r:sandbox_file_t:s0:c122,c144
 
 /mnt/crypto/tor-browser_en-US/Browser/application\.ini  --      gen_context(system_u:object_r:etc_t,s0)
 /mnt/crypto/tor-browser_en-US/Browser/chrome\.manifest  --      gen_context(system_u:object_r:etc_t,s0)
@@ -115,7 +115,7 @@
 
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/preferences/extension-overrides\.js                        --      gen_context(system_u:object_r:etc_t,s0)
 
-/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default -d                                                         system_u:object_r:sandbox_file_t:s0:c122,c144
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/cert8\.db -- <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/addons\.sqlite -- <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/addons\.sqlite-journal -- <<none>>
@@ -144,9 +144,9 @@
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webappsstore\.sqlite-wal -- <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/lock -- <<none>>
 
-/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/bookmarkbackups -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
-/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/HTTPSEverywhereUserRules -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
-/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/bookmarkbackups -d  <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/HTTPSEverywhereUserRules -d <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing -d          <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-malware-simple\.cache --  <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-malware-simple\.pset --  <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-malware-simple\.sbstore --  <<none>>
@@ -154,19 +154,20 @@
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-phish-simple\.pset --  <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/safebrowsing/test-phish-simple\.sbstore --  <<none>>
 
-/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/startupCache -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
-/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/thumbnails -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
-/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps -d                                              gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/startupCache -d                         <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/thumbnails -d                           <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps -d <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Browser/profile\.default/webapps/webapps\.json -- <<none>>
 
-/mnt/crypto/tor-browser_en-US/Desktop -d gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Desktop -d <<none>>
 
 /mnt/crypto/tor-browser_en-US/Data/Tor/geoip                        --      gen_context(system_u:object_r:etc_t,s0)
 /mnt/crypto/tor-browser_en-US/Data/Tor/torrc                        --      gen_context(system_u:object_r:torbrowser_etc_t,s0)
-/mnt/crypto/tor-browser_en-US/Data/Tor/torrc\.orig\.1                --      gen_context(system_u:object_r:torbrowser_etc_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Tor/torrc\.orig\.1               --     <<none>>
+/mnt/crypto/tor-browser_en-US/Data/Tor/torrc\.tmp                   --     <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Tor/torrc-defaults                        --      gen_context(system_u:object_r:torbrowser_etc_t,s0)
 
-/mnt/crypto/tor-browser_en-US/Data/Tor -d gen_context(system_u:object_r:sandbox_file_t,s0)
+/mnt/crypto/tor-browser_en-US/Data/Tor -d                                    system_u:object_r:sandbox_file_t:s0:c122,c144
 /mnt/crypto/tor-browser_en-US/Data/Tor/cached-certs -- <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Tor/cached-microdesc-consensus -- <<none>>
 /mnt/crypto/tor-browser_en-US/Data/Tor/cached-microdescs -- <<none>>
