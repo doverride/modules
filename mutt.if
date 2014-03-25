@@ -93,6 +93,17 @@ template(`mutt_role_template',`
 		read_files_pattern($1_mutt_t, user_home_t, user_home_t)
 	')
 
+    optional_policy(`
+        gen_require(`
+                type gkeyringd_tmp_t;
+        ')
+
+        # traversing ~/.config/pkcs11/modules
+        gnome_list_home_config($1_mutt_t)
+
+        stream_connect_pattern($1_mutt_t, gkeyringd_tmp_t, gkeyringd_tmp_t, $3)
+    ')
+
 	optional_policy(`
 		gpg_role(mutt_roles, $1_mutt_t)
 	')
