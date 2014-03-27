@@ -7,3 +7,12 @@ optional_policy(`
 
 	pulseaudio_tmpfs_content(sandbox_web_client_tmpfs_t)
 ')
+
+optional_policy(`
+	gen_require(`
+		attribute sandbox_x_domain;
+		type moc_tmpfs_t;
+	')
+
+	allow sandbox_x_domain moc_tmpfs_t:file { read_file_perms delete_file_perms };
+')
